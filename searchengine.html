@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+            font-size: 18px;
+        }
+        body {
+            margin: 4vh;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar {
+            width: 25%;
+            border: 1px solid #eee;
+            border-radius: 3px;
+            padding: 15px;
+            height: 92vh;
+            box-shadow: 0px 0px 3px gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .fa-circle {
+            color: orangered;
+        }
+        .searchBar {
+            width: 100%;
+            background-color: #eee;
+            border-radius: 3px;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        input {
+            border: none;
+            outline: none;
+            background: none;
+        }
+        .glass:hover {
+            color: orangered;
+            cursor: pointer;
+        }
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fa-brands {
+            font-size: 25px;
+            margin: 0 10px;
+            color: #333;
+            cursor: pointer;
+        }
+        .fa-brands:hover {
+            color: orangered;
+        }
+        .data {
+            width: 73%;
+            border-radius: 3px;
+            height: 92vh;
+            overflow-y: auto;
+        }
+        .top {
+            height: 60px;
+            border-radius: 3px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+        }
+        .header {
+            height: 200px;
+            border-radius: 3px;
+            background-color: #333;
+            margin: 3vh 0px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header p {
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+        }
+        #root {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+        .box {
+            margin: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .img-box {
+            width: 100%;
+            height: 176px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .images {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .bottom {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 110px;
+        }
+        h2 {
+            font-size: 20px;
+            color: orangered;
+        }
+        button {
+            width: 100%;
+            position: relative;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 7px 25px;
+            cursor: pointer;
+            color: white;
+        }
+        button:hover {
+            background-color: orangered;
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidehead">
+                <div class="dots">
+                    <i class="fa-solid fa-circle"></i>
+                    <i class="fa-solid fa-circle" style="color: #333;"></i>
+                    <i class="fa-solid fa-circle"></i>
+                </div>
+                <hr style="margin: 15px 0; border: 1px solid #eee">
+            </div>
+            <div class="sidebody" style="height: 69vh;">
+                <div class="searchBar">
+                    <input placeholder="Search..." id="searchBar" name="searchBar" type="text">
+                    <i class="fa-solid fa-magnifying-glass glass" id="btn"></i>
+                </div>
+            </div>
+            <div class="sidefoot">
+                <hr style="margin: 15px 0; border: 1px solid #eee">
+                <div class="social-icons">
+                    <i class="fa-brands fa-square-facebook"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-square-github"></i>
+                </div>
+            </div>
+
+        </div>
+        <div class="data">
+            <div class="top">
+                <p>+91818847837</p>
+                <p>himabindu@gmail.com</p>
+            </div>
+            <div class="header">
+                <p>BUY EVERYTHING ONLINE</p>
+            </div>
+            <div class="body">
+                <div id="root"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const product = [
+            {
+                id: 0,
+                image: 'https://beebom.com/wp-content/uploads/2020/03/motorola-razr-design.jpg',
+                title: 'Z Flip Foldable Mobile',
+                price: 120,
+            },
+            {
+                id: 1,
+                image: 'https://m.media-amazon.com/images/I/61N8NMNA8iL._SX679_.jpg',
+                title: 'Air Pods Pro',
+                price: 60,
+            },
+            {
+                id: 2,
+                image: 'https://clideo.com/files/content/what-is-dslr-camera.jpg',
+                title: '250D DSLR Camera',
+                price: 230,
+            },
+            {
+                id: 3,
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPxVb9qKVmOZNnm2b1E4rfRnerhTb5oK_kSQ&usqp=CAU',
+                title: 'Headphones',
+                price: 100,
+            },
+            {
+                id: 4,
+                image: 'https://electronicemporium.in/wp-content/uploads/2019/10/7-3.jpg',
+                title: 'Audio Microphone',
+                price: 230,
+            },
+            {
+                id: 5,
+                image: 'https://m.media-amazon.com/images/I/41xX6nGVK7L.jpg',
+                title: 'Smart Watch',
+                price: 100,
+            },
+            {
+                id: 6,
+                image: 'https://m.media-amazon.com/images/I/71JFMDI0tOL._AC_UF1000,1000_QL80_.jpg',
+                title: 'Laptop',
+                price: 100000
+            },
+            {
+                id: 7,
+                image: 'https://images.unsplash.com/photo-1551739440-5dd934d3a94a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGNvbXB1dGVyfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60',
+                title: 'mac 1098',
+                price: 2000000
+            },
+            {
+                id: 8,
+                image: 'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+                title: 'Vitual Technology',
+                price: 5500
+            },
+            {
+               id: 9,
+               image: 'https://www.aptronixindia.com/pub/media/catalog/product/1/1/11-inch128gbipadprowi-ficelluar-spacegrey_1.png',
+               title: 'ipad',
+               price: 50000
+            },
+            {
+                id: 10,
+                image: 'https://m.media-amazon.com/images/I/61hZrbHRMWL._AC_UF1000,1000_QL80_.jpg',
+                title: 'ipad',
+                price: 75000
+            },
+            {
+                id: 11,
+                image: 'https://www.lg.com/in/images/washing-machines/md07540887/gallery/FHM1408BDL-Washing-Machines-Right-View-MZ-04-v1.jpg',
+                title: 'LG washin Machine',
+                price: 68000
+            },
+            {
+                id: 12,
+                image: 'https://static.toiimg.com/thumb/msid-98296171,width-1280,resizemode-4/98296171.jpg',
+                title: 'godrej AC',
+                price: 52000
+            },
+            {
+                id: 13,
+                image: 'https://i.gadgets360cdn.com/products/televisions/large/1548153702_832_lg_75-inch-led-ultra-hd-4k-tv-75sj955t.jpg?downsize=*:360',
+                title: 'LG 75 Inches',
+                price: 85000
+            },
+            {
+                id: 14,
+                image: 'https://m.media-amazon.com/images/I/51J5X+Z2pkL.jpg',
+                title: 'home theatre',
+                price: 9000
+            },
+            {
+                id: 15,
+                image: 'https://m.media-amazon.com/images/I/611-AgnpEhL._AC_UF1000,1000_QL80_.jpg',
+                title: 'projector',
+                price: 27000
+            },
+            {
+                id: 16,
+                image: 'https://bd.gaadicdn.com/processedimages/motovolt/urbn-ebike/640X309/urbn-ebike6374775680aa1.jpg',
+                title: 'electrical cycle',
+                price: 47000
+            },
+            {
+                id: 17,
+                image: 'https://media.istockphoto.com/id/837180436/photo/compact-printer-isolated.jpg?s=612x612&w=0&k=20&c=SSg8IwnNflHr5g63nQmmM6ZNvy1gtZZuJeNvy21n1rs=',
+                title: 'LG Printer',
+                price: 17000
+            },
+            {
+                id: 18,
+                image: 'https://images-cdn.ubuy.co.in/633ff48eed92a75ce434c355-2-burner-electric-cooktop-3000w-electric.jpg',
+                title: 'panasonic electrical stove',
+                price: 15000
+            },
+            {
+                id: 19,
+                image: 'https://img.fruugo.com/product/6/60/207907606_max.jpg',
+                title: 'Tatto machine',
+                price: 9000
+            },
+            {
+                id: 20,
+                image: 'https://images-cdn.ubuy.co.in/63f98523e7207d7aa37a53b0-portable-charger-power-bank-25800mah.jpg',
+                title: 'Power Bank',
+                price: 2000
+            },
+            {
+                id: 21,
+                image: 'https://rukminim2.flixcart.com/image/832/832/xif0q/computer/f/u/o/-original-imagr5zzj68vamme.jpeg?q=70',
+                title: 'ASUS ROG Ally Ryzen Z1 Octa Core Extreme',
+                price: 9000
+            },
+            {
+                id: 22,
+                image: 'https://rukminim2.flixcart.com/image/832/832/ku5ufm80/router/o/z/6/archer-c20-ac-wireless-dual-band-tp-link-original-imag7cjev8fqe9jv.jpeg?q=70',
+                title: 'Wifi router',
+                price: 1700
+            },
+            {
+                id: 23,
+                image: 'https://rukminim2.flixcart.com/image/832/832/xif0q/microphone/o/w/t/wireless-microphone-system-for-dslr-camcorder-smartphone-tablet-original-imagkd8akhqmxvpd.jpeg?q=70',
+                title: 'camera-microphone',
+                price: 4000
+            },
+        ];
+
+
+        const categories = [...new Set(product.map((item) => { return item }))]
+
+        document.getElementById('searchBar').addEventListener('keyup', (e) => {
+            const searchData = e.target.value.toLowerCase();
+            const filteredData = categories.filter((item) => {
+                return (
+                    item.title.toLowerCase().includes(searchData)
+                )
+            })
+            displayItem(filteredData)
+        });
+
+        const displayItem = (items) => {
+            document.getElementById('root').innerHTML = items.map((item) => {
+                var { image, title, price } = item;
+                return (
+                    `<div class='box'>
+                        <div class='img-box'>
+                            <img class='images' src=${image}></img>
+                        </div> 
+                        <div class='bottom'>
+                            <p>${title}</p>
+                            <h2>$ ${price}.00</h2>
+                        <button>Add to cart</button>
+                        </div>
+                    </div>`
+                )
+            }).join('')
+        };
+        displayItem(categories);
+
+    </script>
+</body>
+</html>
